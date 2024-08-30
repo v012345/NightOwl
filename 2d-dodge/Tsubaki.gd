@@ -46,7 +46,6 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	Socket.put_utf8_string("_on_button_pressed\n")
-	OS.kill(Socket.pid)
 	#print(OS.is_process_running(pid))
 	#if pid and !OS.is_process_running(pid):
 		#print("Process has terminated")

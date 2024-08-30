@@ -38,11 +38,14 @@ func start_heartbeat():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_connected and client.get_available_bytes() > 0:
-		print(client.get_available_bytes())
-		var message = client.get_utf8_string(client.get_available_bytes()).strip_edges()
-		if message:
-			print(message)
-	pass
+		var len = client.get_available_bytes()
+		var m = client.get_partial_data(client.get_u32())
+		if m[0] == OK:
+			var byte_array = PackedByteArray(m[1])
+			var str = byte_array.get_string_from_utf8()
+			if str != "pong":
+				print(str)  # 输出: 这个
+
 	
 func put_utf8_string(s):
 	if is_connected:
