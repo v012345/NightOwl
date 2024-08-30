@@ -12,6 +12,13 @@ offset_bottom = 750.0
 texture = ExtResource("1_t4yva")
 metadata/_edit_lock_ = true
 
+[node name="ButtonLiterally" type="Button" parent="."]
+offset_left = 672.0
+offset_top = 145.0
+offset_right = 888.0
+offset_bottom = 355.0
+size_flags_horizontal = 8
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 466.0
 offset_bottom = 211.0
@@ -21,3 +28,6 @@ layout_mode = 2
 text = "Press Me"
 
 [node name="SubViewport" type="SubViewport" parent="."]
+
+[connection signal="pressed" from="ButtonLiterally" to="." method="_on_button_literally_pressed"]
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
