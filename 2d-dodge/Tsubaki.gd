@@ -1,6 +1,7 @@
 extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$ProgressBar.value = 50
 	#var output = []
 	#print(OS.execute("D:\\NightOwlToolsV2\\NightOwlToolsV2\\NightOwlToolsV2.exe",["D:\\NightOwlToolsV2\\NightOwlToolsV2\\main.lua"],output,true))
 	##print(OS.get_executable_path())

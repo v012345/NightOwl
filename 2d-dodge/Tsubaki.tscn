@@ -29,5 +29,11 @@ text = "Press Me"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 42.0
+offset_top = 608.0
+offset_right = 1112.0
+offset_bottom = 635.0
+
 [connection signal="pressed" from="ButtonLiterally" to="." method="_on_button_literally_pressed"]
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
