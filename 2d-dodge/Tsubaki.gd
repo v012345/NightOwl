@@ -1,7 +1,14 @@
 extends CanvasLayer
+var pr = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ProgressBar.value = 50
+	var heartbeat_timer = Timer.new()
+	heartbeat_timer.wait_time = 1
+	heartbeat_timer.one_shot = false  # 循环触发
+	heartbeat_timer.autostart = true  # 自动启动
+	heartbeat_timer.connect("timeout",update_progress)
+	add_child(heartbeat_timer)
 	#var output = []
 	#print(OS.execute("D:\\NightOwlToolsV2\\NightOwlToolsV2\\NightOwlToolsV2.exe",["D:\\NightOwlToolsV2\\NightOwlToolsV2\\main.lua"],output,true))
 	##print(OS.get_executable_path())
@@ -32,6 +39,9 @@ func _ready() -> void:
 		#print("Received from server: ", data)
 	pass # Replace with function body.
 
+func update_progress():
+	$ProgressBar.value = pr
+	pr+=1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
