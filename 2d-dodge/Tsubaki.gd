@@ -95,3 +95,8 @@ func _on_button_pressed() -> void:
 func _on_button_literally_pressed() -> void:
 	Socket.put_utf8_string("_on_button_literally_pressed\n")
 	pass # Replace with function body.
+
+
+func _on_control_select_src(a) -> void:
+	print(a)
+	pass # Replace with function body.
