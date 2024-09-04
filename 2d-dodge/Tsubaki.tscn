@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfphgm03lnavu"]
 
-[ext_resource type="Script" path="res://Subaki.gd" id="1_6ryjq"]
+[ext_resource type="Script" path="res://tsubaki.gd" id="1_6ryjq"]
 [ext_resource type="Texture2D" uid="uid://lqutgjcm3kh" path="res://images/LoadingBG13.jpg" id="1_t4yva"]
 [ext_resource type="PackedScene" uid="uid://c4e4f78ipcj76" path="res://publish_selection.tscn" id="3_qiyln"]
 
