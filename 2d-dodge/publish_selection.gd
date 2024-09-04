@@ -2,6 +2,9 @@ extends Control
 
 @export var drop_list:OptionButton = null
 signal select_src
+signal publish_ui
+signal publish_plist
+signal delete_db
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("jj")
@@ -38,4 +41,19 @@ func _process(delta: float) -> void:
 
 func _on_option_button_item_selected(index: int) -> void:
 	select_src.emit(index)
+	pass # Replace with function body.
+
+
+func _on_button_publish_ui_pressed() -> void:
+	publish_ui.emit()
+	pass # Replace with function body.
+
+
+func _on_button_publish_plist_pressed() -> void:
+	publish_plist.emit()
+	pass # Replace with function body.
+
+
+func _on_button_delete_db_pressed() -> void:
+	delete_db.emit()
 	pass # Replace with function body.

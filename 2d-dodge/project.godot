@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="椿之歌"
-run/main_scene="res://Tsubaki.tscn"
+run/main_scene="res://tsubaki.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.jpg"
 

@@ -59,3 +59,6 @@ layout_mode = 2
 text = "清除缓存"
 
 [connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="HBoxContainer/ButtonPublishUI" to="." method="_on_button_publish_ui_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonPublishPlist" to="." method="_on_button_publish_plist_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonDeleteDB" to="." method="_on_button_delete_db_pressed"]
