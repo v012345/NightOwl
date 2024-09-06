@@ -9,22 +9,23 @@ signal delete_db
 func _ready() -> void:
 	print("jj")
 	print(drop_list)
-	var flags = [
-		"res://flag_icons/south-korea.png",
-		"res://flag_icons/taiwan.png",
-		"res://flag_icons/japan.png",
-	]
-	for i in range(3):
-		var image = Image.load_from_file(flags[i])
-		var texture = ImageTexture.create_from_image(image)
-		texture.set_size_override(Vector2i(25,25))
-		drop_list.set_item_icon(i,texture)
+	#var flags = [
+		#"res://flag_icons/south-korea.png",
+		#"res://flag_icons/taiwan.png",
+		#"res://flag_icons/japan.png",
+	#]
+	#for i in range(3):
+		#var img_texture = load(flags[i])
+		##var image = Image.load_from_file(flags[i])
+		##var texture = ImageTexture.create_from_image(image)
+		##img_texture.set_size_override(Vector2i(25,25))
+		#drop_list.set_item_icon(i,img_texture)
 
 	
 
-	print(drop_list.get_item_icon(0))
-	print(drop_list.get_item_icon(1))
-	print(drop_list.get_item_icon(2))
+	#print(drop_list.get_item_icon(0))
+	#print(drop_list.get_item_icon(1))
+	#print(drop_list.get_item_icon(2))
 	#var img = Image.new()  # 创建一个 Image 实例
 	#img.load("res://flag_icons/japan.png")  # 通过实例调用 load 方法
 	#drop_list.set_item_icon(0, img)  # 使用加载的图标
@@ -35,7 +36,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	Global.unuse(delta)
 	pass
 
 

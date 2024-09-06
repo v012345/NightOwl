@@ -17,8 +17,8 @@ config/icon="res://icon.jpg"
 
 [autoload]
 
-Global="*res://global.gd"
-Socket="*res://socket.gd"
+Global="*res://autoload/global.gd"
+Socket="*res://autoload/socket.gd"
 
 [display]
 
