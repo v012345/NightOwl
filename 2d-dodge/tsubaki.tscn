@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfphgm03lnavu"]
+[gd_scene load_steps=7 format=3 uid="uid://bfphgm03lnavu"]
 
 [ext_resource type="Script" path="res://tsubaki.gd" id="1_6ryjq"]
 [ext_resource type="Texture2D" uid="uid://lqutgjcm3kh" path="res://images/LoadingBG13.jpg" id="1_t4yva"]
 [ext_resource type="PackedScene" uid="uid://c4e4f78ipcj76" path="res://publish_selection.tscn" id="3_qiyln"]
+[ext_resource type="PackedScene" uid="uid://cjkfuwo0jb755" path="res://ui/ui_config.tscn" id="4_mrx5t"]
+[ext_resource type="Script" path="res://scripts/container.gd" id="4_tek25"]
+[ext_resource type="Texture2D" uid="uid://b0v647wbgyrkf" path="res://icon.jpg" id="5_yewve"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_6ryjq")
@@ -13,6 +16,7 @@ offset_bottom = 750.0
 texture = ExtResource("1_t4yva")
 
 [node name="ButtonLiterally" type="Button" parent="."]
+visible = false
 offset_left = 559.0
 offset_top = 51.0
 offset_right = 775.0
@@ -20,10 +24,14 @@ offset_bottom = 261.0
 size_flags_horizontal = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 466.0
-offset_bottom = 211.0
+visible = false
+offset_left = 128.0
+offset_top = 240.0
+offset_right = 594.0
+offset_bottom = 451.0
 
 [node name="Button" type="Button" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 text = "Press Me"
 
@@ -36,10 +44,35 @@ offset_right = 1112.0
 offset_bottom = 635.0
 
 [node name="Control" parent="." instance=ExtResource("3_qiyln")]
-offset_left = 246.0
-offset_top = 276.0
-offset_right = -535.0
-offset_bottom = -331.0
+offset_right = -781.0
+offset_bottom = -607.0
+metadata/_edit_group_ = true
+
+[node name="Control2" parent="." instance=ExtResource("4_mrx5t")]
+offset_top = 75.0
+offset_bottom = 75.0
+
+[node name="Container" type="Container" parent="."]
+anchors_preset = -1
+offset_left = 813.0
+offset_top = 374.0
+offset_right = 853.0
+offset_bottom = 414.0
+tooltip_text = "123456789"
+script = ExtResource("4_tek25")
+
+[node name="TextEdit" type="TextEdit" parent="Container"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+visible = false
+offset_right = 216.0
+offset_bottom = 479.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("5_yewve")
+expand_mode = 1
 
 [connection signal="pressed" from="ButtonLiterally" to="." method="_on_button_literally_pressed"]
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

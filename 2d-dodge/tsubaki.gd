@@ -100,11 +100,13 @@ func _on_button_literally_pressed() -> void:
 
 func _on_control_select_src(a) -> void:
 	select_src = a
+	print()
 	pass # Replace with function body.
 
 
 func _on_control_publish_ui() -> void:
-	if select_src:
+	if select_src!=null:
+		Socket.put_utf8_string(Global.target[select_src]+"_publish_ui\n")
 		pass
 	else:
 		OS.alert('请选择一个发布目标', '警告')
@@ -112,16 +114,16 @@ func _on_control_publish_ui() -> void:
 
 
 func _on_control_publish_plist() -> void:
-	if select_src:
-		pass
+	if select_src!=null:
+		Socket.put_utf8_string(Global.target[select_src]+"_publish_plist\n")
 	else:
 		OS.alert('请选择一个发布目标', '警告')
 	pass # Replace with function body.
 
 
 func _on_control_delete_db() -> void:
-	if select_src:
-		pass
+	if select_src!=null:
+		Socket.put_utf8_string(Global.target[select_src]+"_delete_db\n")
 	else:
 		OS.alert('请选择一个消除目标', '警告')
 	pass # Replace with function body.
