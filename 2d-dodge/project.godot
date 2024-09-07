@@ -24,6 +24,10 @@ Socket="*res://autoload/socket.gd"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/toast/plugin.cfg")
+
 [input]
 
 move_right={
