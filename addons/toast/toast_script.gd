@@ -3,8 +3,6 @@ extends Control
 
 class_name Toast
 
-signal done;
-
 enum {
 	LENGTH_SHORT,
 	LENGTH_LONG
@@ -72,13 +70,13 @@ func _ready():
 				label.anchor_top = 0;
 				label.anchor_left = 0.5;
 				label.anchor_right = 0.5;
-				label.offset_top = 60;
+				label.margin_top = 60;
 			elif style.toastType == ToastStyle.Type.Full:
 				label.anchor_bottom = 0;
 				label.anchor_top = 0;
 				label.anchor_left = 0;
 				label.anchor_right = 1;
-				label.offset_top = 0;
+				label.margin_top = 0;
 			label.grow_vertical = 1;
 	label.grow_horizontal = 2;
 	label.horizontal_alignment = 1;
@@ -111,16 +109,9 @@ func show():
 	visible = true;
 
 func _animationEnded(whichAnimation): #_a ignores the argument passed from the animation player
-	if whichAnimation == "toast_animations/start":
-		await get_tree().create_timer(toastTimeout).timeout
-		animation.play("toast_animations/end")
-	elif whichAnimation == "endAnimation":
-		animation.play("toast_animations/end")
-# warning-ignore:return_value_discarded
-		animation.disconnect("animation_finished", Callable(self, "_animationEnded"));
-		animation.connect("animation_finished", Callable(self, "_done"));
+	await get_tree().create_timer(toastTimeout).timeout
+	animation.animation_finished.connect(_done)
+	animation.play("toast_animations/end")
 
 func _done(_a):
-	animation.remove_animation_library("start")
 	queue_free();
-	emit_signal("done");

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 var pr = 0
 var select_src = null
 # Called when the node enters the scene tree for the first time.
@@ -57,7 +57,15 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	Socket.put_utf8_string("_on_button_pressed\n")
+	var toast = Toast.new("This is the default toast", Toast.LENGTH_SHORT)
+	get_node("/root").add_child(toast)
+	toast.show()
+	
+	#var label = Label.new();
+	#label.text="jjjjjjjjjjjjjj"
+	##add_child(label)
+	#get_node("/root").add_child(label)
+	#Socket.put_utf8_string("_on_button_pressed\n")
 	#print(OS.is_process_running(pid))
 	#if pid and !OS.is_process_running(pid):
 		#print("Process has terminated")

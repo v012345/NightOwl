@@ -1,7 +1,7 @@
 extends Control
 
 @export var ui_config_item:PackedScene
-
+var toast 
 var config = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +12,9 @@ func _ready() -> void:
 	$ScrollContainer/VBoxContainer.add_child(ui_config_item.instantiate())
 	$ScrollContainer/VBoxContainer.add_child(ui_config_item.instantiate())
 	print(Global.get_config())
+
+	#toast.connect("done", self, "showToast", ["full"])
+	#
 	pass # Replace with function body.
 
 

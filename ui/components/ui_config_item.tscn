@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1.52588e-05
 offset_top = 6.0
 offset_right = 64.0
