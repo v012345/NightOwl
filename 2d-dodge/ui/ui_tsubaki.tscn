@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://bfphgm03lnavu"]
 
-[ext_resource type="Script" path="res://tsubaki.gd" id="1_6ryjq"]
-[ext_resource type="Texture2D" uid="uid://lqutgjcm3kh" path="res://images/LoadingBG13.jpg" id="1_t4yva"]
-[ext_resource type="PackedScene" uid="uid://c4e4f78ipcj76" path="res://publish_selection.tscn" id="3_qiyln"]
-[ext_resource type="PackedScene" uid="uid://cjkfuwo0jb755" path="res://ui/ui_config.tscn" id="4_mrx5t"]
-[ext_resource type="Script" path="res://scripts/container.gd" id="4_tek25"]
-[ext_resource type="Texture2D" uid="uid://b0v647wbgyrkf" path="res://icon.jpg" id="5_yewve"]
+[ext_resource type="Script" path="res://scripts/tsubaki.gd" id="1_r6swb"]
+[ext_resource type="Texture2D" uid="uid://lqutgjcm3kh" path="res://images/LoadingBG13.jpg" id="2_0exky"]
+[ext_resource type="PackedScene" uid="uid://c4e4f78ipcj76" path="res://ui/ui_publish_selection.tscn" id="3_vfv2i"]
+[ext_resource type="PackedScene" uid="uid://cjkfuwo0jb755" path="res://ui/ui_config.tscn" id="4_2uc8v"]
+[ext_resource type="Script" path="res://scripts/container.gd" id="5_6k2rn"]
+[ext_resource type="Texture2D" uid="uid://b0v647wbgyrkf" path="res://icon.jpg" id="6_8y4j6"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_6ryjq")
+script = ExtResource("1_r6swb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1750.0
 offset_bottom = 750.0
-texture = ExtResource("1_t4yva")
+texture = ExtResource("2_0exky")
 
 [node name="ButtonLiterally" type="Button" parent="."]
 visible = false
@@ -43,14 +43,16 @@ offset_top = 608.0
 offset_right = 1112.0
 offset_bottom = 635.0
 
-[node name="Control" parent="." instance=ExtResource("3_qiyln")]
+[node name="Control" parent="." instance=ExtResource("3_vfv2i")]
 offset_right = -781.0
 offset_bottom = -607.0
 metadata/_edit_group_ = true
 
-[node name="Control2" parent="." instance=ExtResource("4_mrx5t")]
-offset_top = 75.0
-offset_bottom = 75.0
+[node name="Control2" parent="." instance=ExtResource("4_2uc8v")]
+offset_left = 34.0
+offset_top = 256.0
+offset_right = 34.0
+offset_bottom = 256.0
 
 [node name="Container" type="Container" parent="."]
 offset_left = 813.0
@@ -58,7 +60,7 @@ offset_top = 374.0
 offset_right = 853.0
 offset_bottom = 414.0
 tooltip_text = "123456789"
-script = ExtResource("4_tek25")
+script = ExtResource("5_6k2rn")
 
 [node name="TextEdit" type="TextEdit" parent="Container"]
 layout_mode = 2
@@ -70,7 +72,7 @@ offset_bottom = 479.0
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("5_yewve")
+texture = ExtResource("6_8y4j6")
 expand_mode = 1
 
 [connection signal="pressed" from="ButtonLiterally" to="." method="_on_button_literally_pressed"]

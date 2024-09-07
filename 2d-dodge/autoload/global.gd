@@ -1,70 +1,36 @@
 extends Node
 
-var gd = "fsdf"
-var config_path = "user://lua_use.cfg"
+var _config_path = "user://lua_use.cfg"
 var default = {
-	cocos_tool_path="jicf",
-	publish=[
+	cocos_tool_path = "C:\\Cocos\\Cocos Studio\\Cocos.Tool.exe",
+	publish = [
 		{
-			name="abc",
-			source="abc",
-			target="abc",
+			name = "abc",
+			source = "abc",
+			target = "abc",
 		}
 	]
 }
-var config = null
-var target = [
-	"korea",
-	"taiwan",
-	"japan",
-]
-# Called when the node enters the scene tree for the first time.
+var _config = null
+
+func get_config():
+	return _config
+
 func _ready() -> void:
-	load_config()
-	pass # Replace with function body.
+	_load_config()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Global.unuse(delta)
+func _process(_delta: float) -> void:
 	pass
 
-func load_config():
-	# Create new ConfigFile object.
-	var config = ConfigFile.new()
-	var err = config.load(config_path)
+func _load_config():
+	var loader = ConfigFile.new()
+	var err = loader.load(_config_path)
 	if err != OK:
-		config = default
+		_config = default.duplicate(true)
 	else:
-		
-		pass
-	
+		_config = loader.get_value("black_moon", "publish_config")
 
-	# Store some values.
-	config.set_value("Player1", "player_name",[{a="jiji"},{a="jiji"}] )
-	config.set_value("Player1", "best_score", 10)
-	config.set_value("Player2", "player_name", "V3geta")
-	config.set_value("Player2", "best_score", 9011101)
-
-	# Save it to a file (overwrite if already exists).
-	config.save("user://config.cfg")
-	
-	var score_data = {}
-	config = ConfigFile.new()
-
-	# Load data from a file.
-
-
-	# If the file didn't load, ignore it.
-
-
-# Iterate over all sections.
-	for player in config.get_sections():
-		# Fetch the data for each section.
-		var player_name = config.get_value(player, "player_name")
-		var player_score = config.get_value(player, "best_score")
-		score_data[player_name] = player_score
-	pass
-
-func unuse(u):
-	return u
+func _exit_tree():
+	var saver = ConfigFile.new()
+	saver.set_value("black_moon", "publish_config", _config)
+	saver.save(_config_path)

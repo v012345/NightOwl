@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bt6be6lieyjav"]
+
+[node name="ui_config_item" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(507, 168)
+layout_mode = 3
+anchor_right = 0.426
+anchor_bottom = 0.21
+offset_right = 16.248
+offset_bottom = 31.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1.52588e-05
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 29.0
+text = "资源名称"
+
+[node name="LineEdit3" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 74.0
+offset_top = 5.48
+offset_right = 496.0
+offset_bottom = 36.48
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.05402
+offset_top = 43.0
+offset_right = 67.054
+offset_bottom = 66.0
+text = "资源文件"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 77.0
+offset_top = 41.0
+offset_right = 499.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.062
+anchor_right = 0.058
+anchor_bottom = 0.097
+offset_left = -0.472985
+offset_top = 77.56
+offset_right = 36.522
+offset_bottom = 96.36
+text = "发布位置"
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 75.0
+offset_top = 82.0
+offset_right = 493.0
+offset_bottom = 113.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 130.0
+offset_right = 420.0
+offset_bottom = 161.0
+mouse_filter = 1
+text = "保存修改"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 441.054
+offset_top = 130.0
+offset_right = 481.054
+offset_bottom = 161.0
+mouse_filter = 1
+text = "删除"

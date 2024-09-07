@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjkfuwo0jb755"]
+[gd_scene load_steps=3 format=3 uid="uid://cjkfuwo0jb755"]
 
 [ext_resource type="Script" path="res://scripts/ui_config_ctrl.gd" id="1_urvd5"]
+[ext_resource type="PackedScene" uid="uid://bt6be6lieyjav" path="res://ui/components/ui_config_item.tscn" id="2_wtoq6"]
 
-[node name="Control" type="Control"]
+[node name="ui_config" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,12 +11,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_urvd5")
+ui_config_item = ExtResource("2_wtoq6")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_right = 943.0
-offset_bottom = 656.0
-columns = 2
+offset_bottom = 37.0
+columns = 3
 
 [node name="Label" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -26,3 +28,27 @@ text = "Cocos.Tool.exe 路径"
 [node name="LineEdit" type="LineEdit" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="button_update_cocos_tool_path" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "更新路径"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 43.0
+offset_right = 939.0
+offset_bottom = 489.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 833.0
+offset_top = 566.0
+offset_right = 905.0
+offset_bottom = 597.0
+text = "添加配置"
+
+[connection signal="pressed" from="GridContainer/button_update_cocos_tool_path" to="." method="_on_button_update_cocos_tool_path_pressed"]

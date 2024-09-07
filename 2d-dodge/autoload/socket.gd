@@ -36,8 +36,7 @@ func start_heartbeat():
 	add_child(heartbeat_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Global.unuse(delta)
+func _process(_delta: float) -> void:
 	if is_connected_ and client.get_available_bytes() > 0:
 		var m = client.get_partial_data(client.get_u32())
 		if m[0] == OK:

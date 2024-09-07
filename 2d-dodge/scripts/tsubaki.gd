@@ -45,8 +45,7 @@ func update_progress():
 	pr+=1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Global.unuse(delta)
+func _process(_delta: float) -> void:
 	#if pid and !OS.is_process_running(pid):
 		##print("Process has terminated")
 		##pid = null
