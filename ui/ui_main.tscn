@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfphgm03lnavu"]
+
+[ext_resource type="Script" path="res://scripts/sp_main.gd" id="1_k4ukw"]
+[ext_resource type="Texture2D" uid="uid://lqutgjcm3kh" path="res://images/LoadingBG13.jpg" id="2_7v2hh"]
+[ext_resource type="PackedScene" uid="uid://c4e4f78ipcj76" path="res://ui/ui_publish_selection.tscn" id="3_t3elm"]
+[ext_resource type="PackedScene" uid="uid://cjkfuwo0jb755" path="res://ui/ui_config.tscn" id="4_5lmvi"]
+
+[node name="ui_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k4ukw")
+metadata/_edit_lock_ = true
+
+[node name="tr_bg" type="TextureRect" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7v2hh")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_lock_ = true
+
+[node name="ui_publish_selection" parent="." instance=ExtResource("3_t3elm")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.25
+
+[node name="ui_config" parent="." instance=ExtResource("4_5lmvi")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+
+[connection signal="delete_db" from="ui_publish_selection" to="." method="_on_control_delete_db"]
+[connection signal="goto_ui_config" from="ui_publish_selection" to="." method="_on_ui_publish_selection_goto_ui_config"]
+[connection signal="publish_plist" from="ui_publish_selection" to="." method="_on_control_publish_plist"]
+[connection signal="publish_ui" from="ui_publish_selection" to="." method="_on_control_publish_ui"]
+[connection signal="select_src" from="ui_publish_selection" to="." method="_on_control_select_src"]
+[connection signal="goto_ui_publish_selection" from="ui_config" to="." method="_on_ui_config_goto_ui_publish_selection"]

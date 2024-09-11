@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjkfuwo0jb755"]
+[gd_scene load_steps=4 format=3 uid="uid://cjkfuwo0jb755"]
 
-[ext_resource type="Script" path="res://scripts/ui_config_ctrl.gd" id="1_urvd5"]
+[ext_resource type="Script" path="res://scripts/sp_config.gd" id="1_urvd5"]
 [ext_resource type="PackedScene" uid="uid://bt6be6lieyjav" path="res://ui/components/ui_config_item.tscn" id="2_wtoq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wput1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
 
 [node name="ui_config" type="Control"]
 layout_mode = 3
@@ -13,42 +16,55 @@ grow_vertical = 2
 script = ExtResource("1_urvd5")
 ui_config_item = ExtResource("2_wtoq6")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_right = 943.0
-offset_bottom = 37.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
 columns = 3
 
-[node name="Label" type="Label" parent="GridContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 tooltip_text = "如果没安装的话, 要安装 Cocos 3.10"
 mouse_filter = 0
 text = "Cocos.Tool.exe 路径"
 
-[node name="LineEdit" type="LineEdit" parent="GridContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="button_update_cocos_tool_path" type="Button" parent="GridContainer"]
+[node name="button_update_cocos_tool_path" type="Button" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "更新路径"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 43.0
-offset_right = 939.0
-offset_bottom = 489.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wput1")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 833.0
-offset_top = 566.0
-offset_right = 905.0
-offset_bottom = 597.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="bt_add_config" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "添加配置"
 
-[connection signal="pressed" from="GridContainer/button_update_cocos_tool_path" to="." method="_on_button_update_cocos_tool_path_pressed"]
+[node name="bt_back" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "保存返回"
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/button_update_cocos_tool_path" to="." method="_on_button_update_cocos_tool_path_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/bt_add_config" to="." method="_on_bt_add_config_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/bt_back" to="." method="_on_bt_back_pressed"]

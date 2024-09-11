@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4e4f78ipcj76"]
 
-[ext_resource type="Script" path="res://scripts/publish_selection.gd" id="1_lvhfh"]
+[ext_resource type="Script" path="res://scripts/sp_publish_selection.gd" id="1_lvhfh"]
 [ext_resource type="FontFile" uid="uid://btgfd6qysglxm" path="res://fonts/MSYaHei.ttf" id="2_cxmra"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_7g7ru"]
@@ -9,36 +9,52 @@
 
 [sub_resource type="ImageTexture" id="ImageTexture_gl2yr"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("drop_list")]
+[node name="ui_publish_selection" type="Control" node_paths=PackedStringArray("drop_list")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -794.0
-offset_bottom = -602.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvhfh")
-drop_list = NodePath("HBoxContainer/OptionButton")
+drop_list = NodePath("GridContainer/hbc_buttons/OptionButton")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="lb_source" type="Label" parent="GridContainer"]
 layout_mode = 2
-offset_left = 9.0
-offset_top = 133.0
-offset_right = 622.0
-offset_bottom = 174.0
-metadata/_edit_group_ = true
+text = "资源文件"
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="le_source" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lb_target" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "发布位置"
+
+[node name="le_target" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lb_select_target" type="Label" parent="GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_cxmra")
-theme_override_font_sizes/font_size = 24
-text = "目标"
+text = "选择目标"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+[node name="hbc_buttons" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="GridContainer/hbc_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_cxmra")
-theme_override_font_sizes/font_size = 24
 item_count = 3
 popup/item_0/text = "韩国"
 popup/item_0/icon = SubResource("ImageTexture_7g7ru")
@@ -49,43 +65,24 @@ popup/item_2/text = "日本"
 popup/item_2/icon = SubResource("ImageTexture_gl2yr")
 popup/item_2/id = 1
 
-[node name="ButtonPublishUI" type="Button" parent="HBoxContainer"]
+[node name="ButtonPublishUI" type="Button" parent="GridContainer/hbc_buttons"]
 layout_mode = 2
 text = "发布皮肤"
 
-[node name="ButtonPublishPlist" type="Button" parent="HBoxContainer"]
+[node name="ButtonPublishPlist" type="Button" parent="GridContainer/hbc_buttons"]
 layout_mode = 2
 text = "发布图集"
 
-[node name="ButtonDeleteDB" type="Button" parent="HBoxContainer"]
+[node name="ButtonDeleteDB" type="Button" parent="GridContainer/hbc_buttons"]
 layout_mode = 2
 text = "清除缓存"
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 51.0
-offset_right = 682.0
-offset_bottom = 117.0
-columns = 2
-
-[node name="Label" type="Label" parent="GridContainer"]
+[node name="bt_change_config" type="Button" parent="GridContainer/hbc_buttons"]
 layout_mode = 2
-text = "资源文件"
+text = "更改配置"
 
-[node name="LineEdit" type="LineEdit" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "发布位置"
-
-[node name="LineEdit2" type="LineEdit" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="pressed" from="HBoxContainer/ButtonPublishUI" to="." method="_on_button_publish_ui_pressed"]
-[connection signal="pressed" from="HBoxContainer/ButtonPublishPlist" to="." method="_on_button_publish_plist_pressed"]
-[connection signal="pressed" from="HBoxContainer/ButtonDeleteDB" to="." method="_on_button_delete_db_pressed"]
+[connection signal="item_selected" from="GridContainer/hbc_buttons/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="GridContainer/hbc_buttons/ButtonPublishUI" to="." method="_on_button_publish_ui_pressed"]
+[connection signal="pressed" from="GridContainer/hbc_buttons/ButtonPublishPlist" to="." method="_on_button_publish_plist_pressed"]
+[connection signal="pressed" from="GridContainer/hbc_buttons/ButtonDeleteDB" to="." method="_on_button_delete_db_pressed"]
+[connection signal="pressed" from="GridContainer/hbc_buttons/bt_change_config" to="." method="_on_bt_change_config_pressed"]
