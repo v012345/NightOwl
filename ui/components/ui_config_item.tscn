@@ -65,3 +65,4 @@ mouse_filter = 1
 text = "      更      新       "
 
 [connection signal="pressed" from="GridContainer/HBoxContainer/bt_delete" to="." method="_on_bt_delete_pressed"]
+[connection signal="pressed" from="GridContainer/HBoxContainer/bt_update" to="." method="_on_bt_update_pressed"]

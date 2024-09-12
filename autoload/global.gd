@@ -6,9 +6,9 @@ var default = {
 	cocos_tool_path = "C:\\Cocos\\Cocos Studio\\Cocos.Tool.exe",
 	publish = [
 		{
-			name = "abc",
-			source = "abc",
-			target = "abc",
+			name = "name",
+			source = "source",
+			target = "target",
 		}
 	]
 }
@@ -26,6 +26,11 @@ func remove_config(index):
 
 func push_config(c):
 	_config.publish.append(c)
+	config_changed.emit()
+
+func update_config(index,c):
+	for x in c:
+		_config.publish[index][x] = c[x]
 	config_changed.emit()
 
 func _ready() -> void:

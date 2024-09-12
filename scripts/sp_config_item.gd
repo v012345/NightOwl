@@ -23,6 +23,16 @@ func set_info(info):
 
 
 func _on_bt_delete_pressed() -> void:
-	if index:
+	if index != null:
 		Global.remove_config(index)
+	pass # Replace with function body.
+
+
+func _on_bt_update_pressed() -> void:
+	if index != null:
+		Global.update_config(index, {
+			name = $GridContainer/le_name.text,
+			source = $GridContainer/le_source.text,
+			target = $GridContainer/le_target.text
+			})
 	pass # Replace with function body.

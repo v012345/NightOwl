@@ -11,6 +11,7 @@ func _ready() -> void:
 	
 func update_info():
 	var config = Global.get_config()
+	print(config)
 	for key in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
 		key.queue_free()
 	$VBoxContainer/GridContainer/LineEdit.text = config.cocos_tool_path
@@ -39,7 +40,7 @@ func _on_bt_back_pressed() -> void:
 
 func _on_bt_add_config_pressed() -> void:
 	Global.push_config({
-		name="",
+		name=str(Global.get_config().publish.size()),
 		source="",
 		target=""
 	})

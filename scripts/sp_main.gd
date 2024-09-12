@@ -7,8 +7,9 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_control_select_src(a) -> void:
-	select_src = a
-	$ui_publish_selection.update_src_and_tag(Global.get_publish(a))
+	if a >= 0 and Global.get_publish(a):
+		select_src = a
+		$ui_publish_selection.update_src_and_tag(Global.get_publish(a))
 
 func _on_control_publish_ui() -> void:
 	if select_src!=null:
